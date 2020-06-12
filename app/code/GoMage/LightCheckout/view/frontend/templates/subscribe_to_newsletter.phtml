@@ -1,0 +1,35 @@
+<?php
+
+// @codingStandardsIgnoreFile
+?>
+<div id="subscribe-to-newsletter" data-bind="scope:'subscribe-to-newsletter'">
+    <br />
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#subscribe-to-newsletter": {
+                "Magento_Ui/js/core/app": {
+                   "components": {
+                        "subscribe-to-newsletter": {
+                            "component": "GoMage_LightCheckout/js/view/subscribe-to-newsletter",
+                            "config": {
+                                "subscribeToNewsletterUrl": "<?php /* @escapeNotVerified */ echo $block->getSubscribeToNewsletterUrl(); ?>",
+                                "email": "<?php /* @escapeNotVerified */ echo $block->getEmailAddress(); ?>"
+                            },
+                            "children": {
+                                "errors": {
+                                    "component": "Magento_Ui/js/view/messages",
+                                    "sortOrder": 0,
+                                    "displayArea": "messages",
+                                    "config": {
+                                        "autoHideTimeOut": -1
+                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</div>

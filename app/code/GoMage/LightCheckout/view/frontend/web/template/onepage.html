@@ -1,0 +1,59 @@
+<div class="onepage-main">
+    <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <!-- ko foreach: getRegion('page_content') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <div class="trust-seals-top">
+    <!-- ko foreach: getRegion('trust_seals_top') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    </div>
+
+    <div class="opc-wrapper">
+        <div id="checkoutSteps"  data-bind="attr: {class: 'opc glc-cols ' + getColumnClass()}">
+            <div class="glc-left-col">
+                <div class="glc-left-col-half">
+                    <!-- ko ifnot: isCustomerLoggedIn() -->
+                        <!-- ko foreach: getRegion('authentication') -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!--/ko-->
+                        <!-- ko foreach: getRegion('customer-email') -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!--/ko-->
+                    <!--/ko-->
+                    <div data-bind="scope: 'checkout.billingAddress'">
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                    </div>
+                    <div data-bind="scope: 'checkout.shippingAddress'">
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                    </div>
+                </div>
+                <div class="glc-left-col-half">
+                    <!-- ko ifnot: isQuoteVirtual -->
+                    <div class="glc-delivery">
+                        <div class="glc-shipping-methods" data-bind="scope: 'checkout.shippingAddress'">
+                            <!-- ko template: getShippingMethodsTemplate() --><!-- /ko -->
+                        </div>
+                        <div id="delivery-date" data-bind="scope: 'checkout.deliveryDate'">
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        </div>
+                    </div>
+                    <!--/ko-->
+                    <div data-bind="scope: 'checkout.payment'">
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                    </div>
+                    <div id="comment-order" data-bind="scope: 'checkout.commentOrder'">
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                    </div>
+                </div>
+            </div>
+            <div class="glc-right-col">
+                <div data-bind="scope: 'checkout.sidebar'">
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

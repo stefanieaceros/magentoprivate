@@ -1,0 +1,19 @@
+<?php
+$socialNetworks = $block->getSocialNetworksToDisplay();
+?>
+<?php
+if ($socialNetworks):
+    ?>
+    <div id="social-networks">
+        <span class="left text"><?php echo __('Login with'); ?></span>
+
+        <?php foreach ($socialNetworks as $socialNetwork): ?>
+            <div class="left">
+                <a href="<?php echo $socialNetwork['urlTo']; ?>" target="_blank">
+                    <span class="<?php echo $socialNetwork['class']; ?>"></span>
+                </a>
+            </div>
+
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

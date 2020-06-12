@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="GoMage\LightCheckout\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="addressFormAttributes" xsi:type="object">GoMage\LightCheckout\Block\Checkout\LayoutProcessor</item>
+                <item name="totalsSortOrder" xsi:type="object">Magento\Checkout\Block\Checkout\TotalsProcessor</item>
+                <item name="directoryData" xsi:type="object">Magento\Checkout\Block\Checkout\DirectoryDataProcessor</item>
+                <item name="configurationData" xsi:type="object">GoMage\LightCheckout\Block\Checkout\ConfigurationProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="one_step_checkout_config_provider" xsi:type="object">GoMage\LightCheckout\Model\ConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Controller\Index\Index">
+        <plugin name="gomage_light_checkout_checkout_controller_index_index" type="GoMage\LightCheckout\Plugin\Checkout\Controller\Index\Index"/>
+    </type>
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="gomage_light_checkout_default_provider" type="GoMage\LightCheckout\Plugin\DefaultProvider"/>
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\Index">
+        <plugin name="gomage_light_checkout_checkout_controller_cart_index" type="GoMage\LightCheckout\Plugin\Checkout\Controller\Cart\Index"/>
+    </type>
+</config>

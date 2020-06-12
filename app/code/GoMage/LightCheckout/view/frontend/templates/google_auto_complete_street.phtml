@@ -1,0 +1,4 @@
+<?php if ($this->isEnableStreetAutoComplete()): ?>
+    <script type="text/javascript"
+            src="//maps.googleapis.com/maps/api/js?key=<?= $this->getGoogleApiKey() ?>&libraries=places"></script>
+<?php endif; ?>

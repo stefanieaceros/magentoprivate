@@ -1,0 +1,35 @@
+<table class="table-checkout-address-list table-checkout-billing-address" data-bind="if: (addressOptions.length > 0)">
+    <tbody>
+    <!--ko foreach: { data: addressOptions, as: 'option'}-->
+    <tr class="row" data-bind="click: $parent.onAddressChange.bind($parent), style: {cursor: 'pointer'}">
+        <td class="col col-billing-address">
+            <div class="glc-radio single">
+                <input class="radio" type="radio"
+                       data-bind="
+                       value: option.customerAddressId,
+                       checked: $parent.isBillingSelected,
+                      attr: {
+                      'id': option.customerAddressId,
+                      },
+                       click: $parent.c"/>
+                <label></label>
+            </div>
+        </td>
+        <td class="col col-option">
+            <span class="customer-address-data" data-bind="text: option.firstname + ' ' + option.lastname"></span>
+            <!-- ko if: option.company -->
+            <span class="customer-address-data" data-bind="text: option.company"></span>
+            <!-- /ko -->
+            <span class="customer-address-data" data-bind="text: option.street[0]"></span>
+            <!-- ko if: option.region -->
+            <span class="customer-address-data" data-bind="text: option.region + ', ' + option.city + ' ' + option.postcode"></span>
+            <!-- /ko -->
+            <!-- ko ifnot: option.region -->
+            <span class="customer-address-data" data-bind="text: option.city + ' ' + option.postcode"></span>
+            <!-- /ko -->
+            <span class="customer-address-data" data-bind="text: option.countryId"></span>
+        </td>
+    </tr>
+    <!-- /ko -->
+    </tbody>
+</table>

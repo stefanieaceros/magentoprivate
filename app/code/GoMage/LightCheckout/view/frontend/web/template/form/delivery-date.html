@@ -1,0 +1,31 @@
+<div class="glc-delivery-date glc-step" data-bind="visible: useForShippingMethod()">
+    <div class="delivery-date">
+        <!-- ko if: ($data.tooltip && tooltip.description) -->
+        <div class="field-tooltip toggle">
+            <span class="field-tooltip-action action-help" tabindex="0" data-toggle="dropdown" data-bind="mageInit: {'dropdown':{'activeClass': '_active'}}" aria-haspopup="true" aria-expanded="false"></span>
+            <div class="field-tooltip-content" data-target="dropdown" aria-hidden="true">
+                <!-- ko text: tooltip.description --><!-- /ko -->
+            </div>
+        </div>
+        <!--/ko-->
+
+        <div class="delivery-date-left half left">
+            <!-- ko foreach: getRegion('selectDate') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        
+        <!-- ko foreach: getRegion('selectTime') -->
+            <div class="delivery-date-right half right">
+                <label class="label"><span data-bind="i18n: 'Time'"></span></label>
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+        <!--/ko-->
+        
+    </div>
+    <div class="delivery-date-text">
+        <!-- ko if: (displayDeliveryDateText == 1) -->
+         <div data-bind="text: deliveryDateText"></div>
+        <!-- /ko -->
+    </div>
+</div>

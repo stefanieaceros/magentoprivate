@@ -1,0 +1,55 @@
+<div class="payment-option _collapsible opc-payment-additional discount-code"
+     data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+    <div class="payment-option-title field choice" data-role="title">
+        <!-- ko i18n: 'Have a discount code?'--><!-- /ko -->
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Enter it here'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <form class="form form-discount" id="discount-form">
+        
+            <!-- ko ifnot: isApplied() -->
+            <div class="payment-option-inner">
+                <div class="field">
+                    <label class="label" for="discount-code">
+                        <span data-bind="i18n: 'Enter your code'"></span>
+                    </label>
+                    <div class="control">
+                        <input class="input-text"
+                               type="text"
+                               id="discount-code"
+                               name="discount_code"
+                               data-validate="{'required-entry':true}"
+                               data-bind="value: couponCode, attr:{placeholder: $t('Enter your code')} " />
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="action action-apply" type="submit" data-bind="'value': $t('Apply'), click: apply">
+                        <span><!-- ko i18n: 'Apply'--><!-- /ko --></span>
+                    </button>
+                </div>
+            </div>            
+            <!-- /ko -->
+            
+            <!-- ko if: isApplied() -->
+            <div class="discount-applied">
+                <div class="discount-applied-value">
+                    <span><!-- ko i18n: 'Promocode'--><!-- /ko --></span>
+                    <strong data-bind="text: couponCode"></strong>
+                    <span><!-- ko i18n: 'Applied'--><!-- /ko --></span>                    
+                </div>
+                <button class="action action-cancel" type="submit" data-bind="'value': $t('Cancel'), click: cancel">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+            <!-- /ko -->
+
+        </form>
+    </div>
+</div>

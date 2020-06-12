@@ -1,0 +1,13 @@
+<?php
+/** @var $block GoMage\LightCheckout\Block\Adminhtml\Order\DeliveryDate */
+?>
+<?php
+$deliveryDate = $block->getDeliveryDate();
+$deliveryDateTime = $block->getDeliveryDateTime();
+?>
+<br />
+<strong><?php echo $block->escapeHtml(__('Delivery Date')) ?></strong>: <?php /* @noEscape */ echo $block->formatDate($block->getDeliveryDate()); ?>
+
+<?php if ($deliveryDateTime): ?>
+    <br /><strong><?php echo $block->escapeHtml(__('Delivery Time')) ?></strong>: <?php /* @noEscape */ echo $block->formatTime($deliveryDateTime); ?>
+<?php endif; ?>

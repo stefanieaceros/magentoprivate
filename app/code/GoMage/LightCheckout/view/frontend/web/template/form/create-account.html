@@ -1,0 +1,40 @@
+<div class="create-account-block" data-bind="visible: isCreateAccountVisible">
+    <div class="glc-checkbox create-account-checkbox" data-bind="visible: isCheckboxVisible">
+        <input type="checkbox" name="create-account-checkbox"
+               data-bind="checked: isCreateAnAccountCheckboxChecked, attr: {id: 'create-account-checkbox'}"/>
+        <label data-bind="attr: {for: 'create-account-checkbox'}">
+            <span data-bind="i18n: 'Create an account after checkout'"></span>
+        </label>
+    </div>
+    <fieldset class="fieldset" data-bind="visible: isCreateAnAccountCheckboxChecked">
+        <form class="form form-create-account" id="create-account-form">
+            <div class="field account-password required half left">
+                <label for="account-password" class="label"><span data-bind="text: getLabel('Password')"></span></label>
+                <div class="control input-field">
+                    <input type="password" name="password" id="account-password"
+                           class="input-text"
+                           data-bind="
+                           attr: {
+                                    'data-password-min-length': passwordMinLength,
+                                    'data-password-min-character-sets': passwordMinCharacterSets,
+                                    'placeholder': getPlaceholder('Password')
+                               },
+                               event: {change: function(){validate('password')}}"
+                           data-validate="{required:true, 'validate-customer-password':true}"
+                           autocomplete="off" required/>
+                </div>
+            </div>
+            <div class="field confirmation required half right">
+                <label for="account-password-confirmation" class="label"><span data-bind="text: getLabel('Confirm Password')"></span></label>
+                <div class="control input-field">
+                    <input type="password" name="password_confirmation" id="account-password-confirmation"
+                           class="input-text"
+                           data-bind="attr: {'placeholder': getPlaceholder('Confirm Password')},event: {change: function(){validate('password-confirmation')}}"
+                           data-validate="{required:true, equalTo:'#account-password'}"
+                           autocomplete="off" required/>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+<div data-bind="afterRender: afterRenderCreateAnAccount.bind($data)"></div>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="left">
+            <referenceBlock name="order_shipping_view" template="GoMage_LightCheckout::order/shipping.phtml">
+                <block class="GoMage\LightCheckout\Block\Adminhtml\Order\DeliveryDate" name="lc_delivery_date" as="lc_delivery_date"/>
+            </referenceBlock>
+        </referenceContainer>
+        <referenceContainer name="order_additional_info">
+            <block name="order_comment_view" template="GoMage_LightCheckout::order/comment.phtml">
+                <block class="GoMage\LightCheckout\Block\Adminhtml\Order\Comment" name="lc_comment" as="lc_comment"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

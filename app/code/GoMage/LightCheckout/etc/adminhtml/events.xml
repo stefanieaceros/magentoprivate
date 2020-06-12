@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_gomage_light_checkout_configuration">
+        <observer name="gomage_light_checkout_terms_and_conditions_checker"
+                  instance="GoMage\LightCheckout\Observer\TermsAndConditionsChecker" />
+        <observer name="gomage_light_checkout_vat_enable_field"
+                  instance="GoMage\LightCheckout\Observer\EnableVatFieldOnFrontend" />
+    </event>
+    <event name="admin_system_config_changed_section_customer">
+        <observer name="gomage_light_checkout_disable_eu_vat"
+                  instance="GoMage\LightCheckout\Observer\DisableEuVat" />
+    </event>
+</config>

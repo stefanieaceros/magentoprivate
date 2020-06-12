@@ -1,0 +1,63 @@
+<?php if ($this->getIsEnabledLightCheckout()): ?>
+<style type="text/css">
+    .glc .action.primary {
+        background: <?php echo $this->getPlaceOrderButtonColor();?>
+    }
+
+    .glc .action.primary:hover,
+    .glc .action.primary:active {
+        background: <?php echo $this->getPlaceOrderButtonHoverColor();?>
+    }
+    .glc .action.primary.login {
+        background: <?php echo $this->getCheckoutColor();?>
+    }
+
+    .glc-step .step-title,
+    .lightcheckout-index-index .ui-datepicker .ui-datepicker-calendar .ui-state-hover,
+    .lightcheckout-index-index .ui-datepicker .ui-datepicker-calendar .ui-state-active,
+    .glc .opc-block-summary .items-in-cart > .title strong .heading-qty,
+    .glc .minicart-items .product-item-details .change-qty.decrease a:hover,
+    .glc .minicart-items .product-item-details .change-qty.increase a:hover {
+        background: <?php echo $this->getCheckoutColor();?>
+    }
+    .glc-checkbox label:before,
+    .checkout-agreement input + label:before,
+    .admin__field-option input.admin__control-checkbox + label:before,
+    .glc-radio label:before,
+    .glc .payment-method-title .label:before,
+    .glc .fieldset-password .field-with-remind .action.remind,
+    .delivery-date-left ._has-datepicker ~ .ui-datepicker-trigger:hover:before,
+    .lightcheckout-index-index .ui-datepicker .ui-datepicker-prev:hover,
+    .lightcheckout-index-index .ui-datepicker .ui-datepicker-next:hover,
+    .glc .minicart-items .action.delete:hover,
+    .glc .minicart-items .product-item-details .change-qty a,
+    .glc .discount-code.payment-option .payment-option-title .action-toggle,
+    .glc .discount-code.payment-option .payment-option-title .action-toggle:after,
+    .glc .discount-applied .discount-applied-value,
+    .glc .field-tooltip .field-tooltip-action:hover:before,
+    .glc .discount-applied .action-cancel:hover,
+    .glc .new-address .action,
+    .glc .checkout-agreement .action:hover {
+        color: <?php echo $this->getCheckoutColor();?>
+    }
+
+    .glc-switcher input:checked + label:before,
+    .glc-switcher input:checked + label:after,
+    .glc .minicart-items .product-item-details .change-qty.decrease a:hover,
+    .glc .minicart-items .product-item-details .change-qty.increase a:hover,
+    .glc .discount-code.payment-option .actions-toolbar .primary .action {
+        background-color: <?php echo $this->getCheckoutColor();?>
+    }
+    
+    .glc .minicart-items .product-item-details .change-qty.decrease a:hover,
+    .glc .minicart-items .product-item-details .change-qty.increase a:hover{
+        border-color: <?php echo $this->getCheckoutColor();?>
+    }
+
+    .glc input.input-text:focus,
+    .glc textarea:focus,
+    .glc select:focus {
+        border-color: <?php echo $this->getCheckoutColor();?>
+    }
+</style>
+<?php endif; ?>

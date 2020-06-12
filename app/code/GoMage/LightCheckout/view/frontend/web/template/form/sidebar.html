@@ -1,0 +1,34 @@
+<div id="opc-sidebar" class="glc-step glc-sidebar">
+    <!-- ko foreach: getRegion('summary') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+
+    <div class="opc-sidebar-mobile">
+
+        <div class="opc-block-shipping-information">
+            <!-- ko foreach: getRegion('shipping-information') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+
+        <form id="co-place-order-agreement" class="form" novalidate="novalidate">
+            <!-- ko foreach: getRegion('checkoutAgreements') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </form>
+
+        <div class="trust-seals-before-button">
+            <!-- ko foreach: getRegion('trust_seals_before_place_order_button') -->
+             <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <!-- ko foreach: getRegion('placeOrderButton') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="trust-seals-after-button">
+            <!-- ko foreach: getRegion('trust_seals_after_place_order_button') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+    </div>
+</div>

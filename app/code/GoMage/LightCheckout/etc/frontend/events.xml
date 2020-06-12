@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_generate_blocks_after">
+        <observer name="gomage_light_checkout_remove__review_block_in_success_page"
+                  instance="GoMage\LightCheckout\Observer\RemoveReviewBlockInSuccessPage" />
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="gomage_light_checkout_automatically_register_customer_on_onepage_success"
+                  instance="GoMage\LightCheckout\Observer\AutomaticallyRegisterCustomerOnOnepageSuccess" />
+    </event>
+</config>

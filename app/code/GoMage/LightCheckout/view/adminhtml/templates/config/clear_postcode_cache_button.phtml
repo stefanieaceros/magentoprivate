@@ -1,0 +1,41 @@
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/confirm',
+        'prototype'
+    ], function ($, confirmation, ) {
+        var buttonToClear = $('#clear_zip_cache_button');
+        buttonToClear.click(function () {
+            confirmation({
+                title: 'Zip codes cache clearing',
+                content: 'Are you sure that you want to clear zip codes cache?',
+                actions: {
+                    confirm: function () {
+                        new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
+                            showLoader: true,
+                            onSuccess: function (response) {
+                                response = JSON.parse(response.responseText);
+                                if (response.success) {
+                                    $('<div id="messages" style="margin-top: 10px"><div ' +
+                                        'class="messages"><div '
+                                        + 'class="message message-success success"><div data-ui-id="messages-message-success">'
+                                        + response.message + '</div></div></div></div>').insertAfter(buttonToClear);
+                                } else {
+                                    $('<div id="messages" style="margin-top: 10px"><div class="messages"><div ' +
+                                        'class="message message-error error"><div data-ui-id="messages-message-error">'
+                                        + response.message + '</div></div></div></div>').insertAfter(buttonToClear);
+                                }
+                            },
+                            always: function () {
+                            }
+                        });
+                    }
+                }
+            });
+        });
+
+    });
+</script>
+
+<?php echo $block->getButtonHtml() ?>
+

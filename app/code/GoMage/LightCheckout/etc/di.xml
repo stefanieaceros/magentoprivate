@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="GoMage\LightCheckout\Api\GuestQuoteItemManagementInterface" type="GoMage\LightCheckout\Model\GuestQuoteItemManagement" />
+    <preference for="GoMage\LightCheckout\Api\QuoteItemManagementInterface" type="GoMage\LightCheckout\Model\QuoteItemManagement" />
+    <preference for="GoMage\LightCheckout\Model\QuoteItemManagement\ResponseDataInterface" type="GoMage\LightCheckout\Model\QuoteItemManagement\ResponseData" />
+    <preference for="GoMage\LightCheckout\Api\CheckoutAdditionalManagementInterface" type="GoMage\LightCheckout\Model\CheckoutAdditionalManagement" />
+    <preference for="GoMage\LightCheckout\Api\CheckVatNumberInterface" type="GoMage\LightCheckout\Model\CheckVatNumber" />
+    <preference for="GoMage\LightCheckout\Api\GetAddressByPostCodeInterface" type="GoMage\LightCheckout\Model\GetAddressByPostCode" />
+    <preference for="GoMage\LightCheckout\Model\GetAddressByPostCode\ResponseDataInterface" type="GoMage\LightCheckout\Model\GetAddressByPostCode\ResponseData" />
+    <preference for="GoMage\LightCheckout\Api\IsCustomerSubscribedForNewsletterInterface" type="GoMage\LightCheckout\Model\IsCustomerSubscribedForNewsletter" />
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="lc_delivery_date_time" xsi:type="string">sales_order.lc_delivery_date_time</item>
+                <item name="lc_delivery_date" xsi:type="string">sales_order.lc_delivery_date</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Tax\Model\ResourceModel\Calculation">
+        <plugin name="gomage_light_checkout_tax_exclude_tax_rule" type="GoMage\LightCheckout\Plugin\Tax\ExcludeTaxRule"/>
+    </type>
+
+    <virtualType name="LightCheckoutArrayNodeConfig" type="Magento\Framework\Config\Dom\ArrayNodeConfig">
+        <arguments>
+            <argument name="assocArrayAttributes" xsi:type="array">
+                <item name="(/item)+" xsi:type="string">name</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="LightCheckoutConverterDomFlat" type="Magento\Framework\Config\Converter\Dom\Flat">
+        <arguments>
+            <argument name="arrayNodeConfig" xsi:type="object">LightCheckoutArrayNodeConfig</argument>
+        </arguments>
+    </virtualType>
+    <type name="GoMage\LightCheckout\Model\Layout\FetchArgs">
+        <arguments>
+            <argument name="checkoutConverterDomFlat" xsi:type="object">LightCheckoutConverterDomFlat</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Customer\Model\Address\CompositeValidator">
+        <plugin name="gomage_light_checkout_validator"
+                type="GoMage\LightCheckout\Plugin\Customer\Model\Address\ChangeAddressValidationAccordingToConfiguration"/>
+    </type>
+    <type name="Magento\Customer\Model\Attribute\Data\Postcode">
+        <plugin name="gomage_light_checkout_validator_postcode"
+                type="GoMage\LightCheckout\Plugin\Customer\Model\Attribute\Data\ValidatePostcode"/>
+    </type>
+    <type name="Magento\Quote\Api\ChangeQuoteControlInterface">
+        <plugin name="gomage_light_checkout_simulate_is_allowed_when_creating_customer"
+                type="GoMage\LightCheckout\Plugin\Quote\SimulateIsAllowedWhenCreatingCustomer"/>
+    </type>
+</config>

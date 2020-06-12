@@ -1,0 +1,16 @@
+<div id="shipping" class="glc-step glc-shipping-address checkout-shipping-address" data-bind="visible: canUseShippingAddress() && !isAddressSameAsShipping()">
+    <div class="step-title" data-bind="i18n: 'Shipping Address'" data-role="title"></div>
+    <div id="checkout-step-shipping"
+         class="step-content"
+         data-role="content">
+
+        <!-- ko if: (addressOptions.length > 0) -->
+        <!-- ko template: 'GoMage_LightCheckout/form/shipping-address/list' --><!-- /ko -->
+        <!-- /ko -->
+
+        <!-- ko template: 'GoMage_LightCheckout/form/shipping-address/form' --><!-- /ko -->
+
+        <div class="mp-clear"></div>
+    </div>
+</div>
+

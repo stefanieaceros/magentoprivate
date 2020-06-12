@@ -1,0 +1,14 @@
+<label class="label"><span data-bind="i18n: 'Select a Date'"></span></label>
+<div class="control">
+    <input class="input-text admin__control-text" type="text" readonly="readonly" data-bind="
+            hasFocus: focused,
+            datepicker: { storage: shiftedValue, options: options },
+            valueUpdate: valueUpdate,
+            attr: {
+                value: shiftedValue,
+                name: inputName,
+                placeholder: placeholder,
+                'aria-describedby': noticeId,
+                disabled: disabled
+        }"/>
+</div>

@@ -1,0 +1,79 @@
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/light_checkout/guest-carts/:cartId/quote-items/:itemId" method="DELETE">
+        <service class="GoMage\LightCheckout\Api\GuestQuoteItemManagementInterface" method="removeItemById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/light_checkout/carts/mine/quote-items/:itemId" method="DELETE">
+        <service class="GoMage\LightCheckout\Api\QuoteItemManagementInterface" method="removeItemById"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/light_checkout/guest-carts/:cartId/quote-items" method="POST">
+        <service class="GoMage\LightCheckout\Api\GuestQuoteItemManagementInterface" method="updateItemQty"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/light_checkout/carts/mine/quote-items" method="POST">
+        <service class="GoMage\LightCheckout\Api\QuoteItemManagementInterface" method="updateItemQty"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/light_checkout/additional-checkout-information" method="POST">
+        <service class="GoMage\LightCheckout\Api\CheckoutAdditionalManagementInterface" method="saveAdditionalInformation"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/light_checkout/check-vat-number" method="POST">
+        <service class="GoMage\LightCheckout\Api\CheckVatNumberInterface" method="execute"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/light_checkout/guest-carts/:cartId/update-sections" method="POST">
+        <service class="GoMage\LightCheckout\Api\GuestQuoteItemManagementInterface" method="updateSections"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/light_checkout/carts/mine/update-sections" method="POST">
+        <service class="GoMage\LightCheckout\Api\QuoteItemManagementInterface" method="updateSections"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/light_checkout/get-address-by-zip-code" method="POST">
+        <service class="GoMage\LightCheckout\Api\GetAddressByPostCodeInterface" method="execute"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/light_checkout/get-address-by-zip-code" method="POST">
+        <service class="GoMage\LightCheckout\Api\GetAddressByPostCodeInterface" method="execute"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/light_checkout/is-customer-subscribed-for-newsletter" method="POST">
+        <service class="GoMage\LightCheckout\Api\IsCustomerSubscribedForNewsletterInterface" method="execute"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

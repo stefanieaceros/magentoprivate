@@ -1,0 +1,30 @@
+<!-- ko if: (isCustomerLoggedIn) -->
+<div class="new-address"
+     data-bind="visible: isNewAddressLinkVisible && addressOptions.length > 0">
+                <span class="action action-toggle" id="add-new-address" data-bind="click: addNewAddressClick">
+                    <i class="material-icons">add</i>
+                    <span><!-- ko i18n: 'Add New Address'--><!-- /ko --></span>                    
+                </span>
+</div>
+<!-- /ko -->
+
+<form class="form form-add-address form-shipping-address" id="co-shipping-form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+    <!-- ko foreach: getRegion('before-fields') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <!-- ko if: (isCustomerLoggedIn) -->
+    <div class="field choice glc-checkbox glc-checkbox-save-address" data-bind="visible: !isNewAddressLinkVisible() || addressOptions.length == 0">
+        <input type="checkbox" class="checkbox" id="shipping-save-in-address-book" data-bind="checked: saveInAddressBook" />
+        <label for="shipping-save-in-address-book">
+            <span data-bind="i18n: 'Save New Address to Address Book'"></span>
+        </label>
+    </div>
+    <!-- /ko -->
+    <div id="shipping-new-address-form" class="fieldset address"
+         data-bind="visible: !isCustomerLoggedIn || !isNewAddressLinkVisible() || addressOptions.length == 0">
+        <!-- ko foreach: getRegion('additional-fieldsets') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
+</form>
+</div>

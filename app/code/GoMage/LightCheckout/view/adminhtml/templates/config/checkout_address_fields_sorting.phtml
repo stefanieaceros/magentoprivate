@@ -1,0 +1,123 @@
+<?php
+$visible = $block->getVisibleFields();
+$notVisible = $block->geNotVisibleFields();
+?>
+<textarea id="gomage_light_checkout_configuration_checkout_address_fields_sorting_text"
+          name="groups[checkout_address_fields_sorting][fields][fields_form][value]"
+          class="check-mandatory-settings textarea admin__control-textarea"
+          data-ui-id="textarea-groups-checkout_address_fields_sorting-fields-fields_form-value" style="display: none"></textarea>
+<div id="checkout-address-fields">
+    <div id="sort-content">
+        <div class="column left">
+            <div class="field-wrapper available-wrapper">
+                <div class="title">
+                    <h2><?php echo __('Not visible on checkout page'); ?></h2>
+                </div>
+                <div class="field field-not-visible">
+                    <ul class="sortable-list">
+                        <?php foreach ($notVisible as $field): ?>
+                            <li class="sortable-item" id="<?php echo $field->getId() ?>"
+                                code="<?php echo $field->getAttributeCode() ?>">
+                                <div class="attribute-label">
+                                    <?php echo $field->getFrontendLabel() ?>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="column right">
+            <div class="field-wrapper sorted-wrapper">
+                <div class="title">
+                    <h2><?php echo __('Visible on checkout page'); ?></h2>
+                </div>
+                <div class="field field-visible">
+                    <ul class="sortable-list">
+                        <?php foreach ($visible as $field): ?>
+                            <li class="sortable-item <?php echo $field->getIsWide() ? 'wide' : '' ?>"
+                                id="<?php echo $field->getId() ?>"
+                                code="<?php echo $field->getAttributeCode() ?>">
+                                <div class="attribute-label">
+                                    <?php echo $field->getFrontendLabel() ?>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(['jquery', 'jquery/ui', 'jquery/validate', 'mage/translate'], function ($) {
+        $(function () {
+            //sort fields
+            $("#checkout-address-fields .sortable-list").sortable({
+                helper: 'clone',
+                connectWith: '#checkout-address-fields .sortable-list',
+                placeholder: 'potential-position',
+                start: function (e, hash) {
+                    if (hash.item.hasClass('wide')) {
+                        hash.placeholder.addClass('wide');
+                    }
+                }
+            });
+
+            $('#checkout-address-fields .sortable-list').disableSelection();
+            $('#checkout-address-fields .sortable-list .sortable-item').addClass('left');
+
+            //resize fields
+            $('#sort-content ul li .attribute-label').resizable({
+                maxHeight: 40,
+                minHeight: 40,
+                helper: 'ui-resizable-border',
+                stop: function (e, ui) {
+                    var field = ui.element.parent();
+                    (ui.element.width() * 2 > field.width()) ?
+                        field.addClass('wide') :
+                        field.removeClass('wide');
+
+                    ui.element.css({width: ''});
+                }
+            });
+        });
+
+        $.validator.addMethod(
+            "check-mandatory-settings",
+            function () {
+                var result = true;
+                $('#checkout-address-fields .field-not-visible ul li').each(
+                    function (index, element) {
+                        var code = element.getAttribute('code'),
+                            mandatory = $('tbody td select[name="groups[checkout_address_fields_required][fields][' +
+                                code + '][value]"]');
+                        if (parseInt(mandatory.val()) === 1) {
+                            result = false;
+                        }
+                    }
+                );
+
+                return result;
+            },
+            $.mage.__(
+                'Error! All mandatory Address fields should be visible on the Checkout page.'
+            )
+        );
+
+        $('#config-edit-form').submit(function() {
+            var fields = [];
+
+            $('.right .sortable-item').each(function (index, el) {
+                fields.push({
+                    code: $(el).attr('code'),
+                    isWide: !!$(el).hasClass('wide')
+                });
+            });
+
+            $('#gomage_light_checkout_configuration_checkout_address_fields_sorting_text').val(JSON.stringify(fields));
+
+            return true;
+        });
+    });
+</script>

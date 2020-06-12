@@ -1,0 +1,14 @@
+<!-- ko foreach: getRegion('messages') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+<div>
+    <!-- ko if: isFormVisible -->
+    <p data-bind="i18n: 'You can subscribe to newsletter.'"></p>
+    <form method="post" data-bind="submit: subscribeToNewsletter">
+        <input type="submit" class="action primary" data-bind="value: $t('Subscribe'), disable: subscribingStarted" />
+    </form>
+    <!-- /ko -->
+    <!-- ko if: newsletterSubscribed -->
+    <p data-bind="i18n: 'You were successfully subscribed to newsletter.'"></p>
+    <!-- /ko -->
+</div>

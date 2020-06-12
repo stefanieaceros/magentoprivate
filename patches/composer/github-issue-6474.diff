@@ -1,0 +1,12 @@
+diff --git a/app/code/Magento/Payment/view/frontend/web/js/view/payment/iframe.js b/app/code/Magento/Payment/view/frontend/web/js/view/payment/iframe.js
+index c8a6fef58d31..7d01c195791e 100644
+--- a/app/code/Magento/Payment/view/frontend/web/js/view/payment/iframe.js
++++ b/app/code/Magento/Payment/view/frontend/web/js/view/payment/iframe.js
+@@ -154,6 +154,7 @@ define(
+              */
+             clearTimeout: function () {
+                 clearTimeout(this.timeoutId);
++                this.fail();
+ 
+                 return this;
+             },

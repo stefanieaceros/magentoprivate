@@ -1,0 +1,10 @@
+<div class="glc-comment-order glc-step">
+    <div class="step-title" data-bind="i18n: getCommentConfigData('title')" data-role="title"></div>
+    <div class="comment-order">
+        <!-- ko foreach: getRegion('comment') -->
+        <div class="comment-order">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        </div>
+        <!--/ko-->
+    </div>
+</div>

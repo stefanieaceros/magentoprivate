@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <gomage_light_checkout_configuration>
+            <general>
+                <page_title>GoMage LightCheckout</page_title>
+                <enable_discount_codes>1</enable_discount_codes>
+                <show_3_column_checkout>1</show_3_column_checkout>
+            </general>
+            <checkout_address_fields_required>
+                <firstname>1</firstname>
+                <lastname>1</lastname>
+                <country_id>1</country_id>
+                <city>1</city>
+                <street>1</street>
+                <postcode>1</postcode>
+                <telephone>1</telephone>
+                <region_id>2</region_id>
+            </checkout_address_fields_required>
+            <devices>
+                <desktop>1</desktop>
+            </devices>
+            <vat>
+                <text_under_vat_tax_field>Buy without VAT (for EU only)</text_under_vat_tax_field>
+            </vat>
+            <number_product_in_checkout>
+                <number_visible_in_checkout>10</number_visible_in_checkout>
+            </number_product_in_checkout>
+            <order_comment>
+                <title>Comment</title>
+            </order_comment>
+        </gomage_light_checkout_configuration>
+    </default>
+</config>

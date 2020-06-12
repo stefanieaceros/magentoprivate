@@ -1,0 +1,590 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="gomage_light_checkout_configuration" translate="label" type="text" sortOrder="200"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Light Checkout</label>
+            <tab>gomage</tab>
+            <resource>GoMage_LightCheckout::light_checkout</resource>
+            <group id="general" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+                <field id="is_enabled" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable GoMage Light Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="default_shipping_method" translate="label" type="select" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Shipping Method</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\ShippingMethods</source_model>
+                </field>
+                <field id="default_payment_method" translate="label" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Payment Method</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\PaymentMethods</source_model>
+                </field>
+                <field id="page_title" translate="label" type="text" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Title</label>
+                </field>
+                <field id="page_content" translate="label" type="textarea" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Content</label>
+                </field>
+                <field id="enable_different_shipping_address" translate="label" type="select" sortOrder="70"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Different Shipping Address</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\EnableCheckboxOptions</source_model>
+                </field>
+                <field id="allow_to_change_qty" translate="label" type="select" sortOrder="80"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow to change Qty</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="allow_to_remove_item_from_checkout" translate="label" type="select" sortOrder="90"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow to Remove Item from Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="disable_cart" translate="label" type="select" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_discount_codes" translate="label" type="select" sortOrder="110"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Discount Codes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_order_summary_on_success_page" translate="label" type="select" sortOrder="120"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Order Summary on Success Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_3_column_checkout" translate="label" type="select" sortOrder="130"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show 3 Column Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="registration" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Registration</label>
+                <field id="checkout_mode" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Checkout Mode</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\CheckoutMode</source_model>
+                </field>
+                <field id="auto_registration" translate="label" type="select" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto-Registration</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="checkout_mode">0</field>
+                    </depends>
+                </field>
+                <field id="create_an_account_checkbox" translate="label" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Create an Account checkbox</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\CheckboxOptions</source_model>
+                    <depends>
+                        <field id="auto_registration">0</field>
+                        <field id="checkout_mode">0</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="devices" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Devices</label>
+                <field id="desktop" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show on Desktops and Laptops</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="tablet" translate="label" type="multiselect" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show on Tablet Devices with Full Browser</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\OperationSystemsForDevices</source_model>
+                </field>
+                <field id="smartphone" translate="label" type="multiselect" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show on Smartphones</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\OperationSystemsForDevices</source_model>
+                </field>
+            </group>
+            <group id="checkout_address_fields_required" translate="label" type="text" sortOrder="170" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Address Fields Settings</label>
+                <field id="firstname" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>First Name</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="lastname" translate="label" type="select" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Last Name</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="company" translate="label" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Company</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="country_id" translate="label" type="select" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Country</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="city" translate="label" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>City</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="street" translate="label" type="select" sortOrder="70"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Street Address</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="postcode" translate="label" type="select" sortOrder="80"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Zip/Postal Code</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="region_id" translate="label" type="select" sortOrder="90"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>State/Province</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\AddressFieldStateOptions</source_model>
+                </field>
+                <field id="telephone" translate="label" type="select" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Phone Number</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="checkout_address_fields_sorting" translate="label" type="text" sortOrder="175" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Address Fields Sorting</label>
+                <field id="keep_field_names_inside" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Keep field names inside</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="fields_form" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Visibility and Sorting</label>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\CheckoutAddressFieldsSorting</frontend_model>
+                </field>
+            </group>
+            <group id="delivery_date" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Delivery Date</label>
+                <field id="enable_delivery_date" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Delivery Date</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_time" translate="label" type="select" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Time</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="delivery_days" translate="label" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delivery Days</label>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\DeliveryDate\DeliveryDays</frontend_model>
+                    <backend_model>GoMage\LightCheckout\Model\Config\Backend\SelectFieldConverter</backend_model>
+                </field>
+                <field id="non_working_days" translate="label" type="select" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Non-Working Days</label>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\DeliveryDate\NonWorkingDays</frontend_model>
+                    <backend_model>GoMage\LightCheckout\Model\Config\Backend\SelectFieldConverter</backend_model>
+                </field>
+                <field id="set_interval_for_delivery" translate="label" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Set Interval for Delivery, days</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\IntervalForDelivery</source_model>
+                </field>
+                <field id="date_format" translate="label" type="select" sortOrder="70"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Date Format</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\DateFormats</source_model>
+                </field>
+                <field id="use_delivery_date_for" translate="label" type="multiselect" sortOrder="80"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Delivery Date for</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\ShippingMethods</source_model>
+                </field>
+                <field id="display_delivery_date_text" translate="label" type="select" sortOrder="90"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Delivery Date Text</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="delivery_date_text" translate="label" type="textarea" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delivery Date Text</label>
+                </field>
+            </group>
+            <group id="geoip" translate="label" type="text" sortOrder="250" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>GeoIP Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable GeoIP</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\GeoIp</frontend_model>
+                </field>
+                <field id="enable_for_country" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable GeoIP for Country</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\GeoIp</frontend_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="enable_for_state" translate="label" type="select" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable GeoIP for State/Province</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\GeoIp</frontend_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="enable_for_zip" translate="label" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable GeoIP for Zip/Postcode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\GeoIp</frontend_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="enable_for_city" translate="label" type="select" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable GeoIP for City</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\GeoIp</frontend_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="autofill_by_zipcode" translate="label" type="text" sortOrder="280" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Google Autofill by Zip Code</label>
+                <field id="enable" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Zip Code Autofill</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="google_api_key" translate="label" type="text" sortOrder="25" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Google API Key</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="enabled_zip_caching" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Zip Caching</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="clear_postcode_button" translate="label comment" type="button" sortOrder="35" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\AutofillByZipcode\ClearPostcodeCacheButton</frontend_model>
+                    <depends>
+                        <field id="enabled_zip_caching">1</field>
+                    </depends>
+                </field>
+                <field id="api_mode" translate="label" type="multiselect" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API Mode</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\AutofillByZipCode\Mode</source_model>
+                    <comment>If not selected, all apis will be used in order.</comment>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="disable_address_fields" translate="label" type="select" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Disable Address Fields</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="auto_complete_by_street" translate="label" type="text" sortOrder="320" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Google Auto Complete By Street</label>
+                <field id="enable" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Street Autofill</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="google_api_key" translate="label" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Google API Key</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="terms_and_conditions" translate="label" type="text" sortOrder="400" showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Terms And Conditions</label>
+                <field id="enable" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Terms and Conditions</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="vat" translate="label" type="text" sortOrder="420" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>EU VAT/Tax Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable EU VAT Option</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="verification_system" translate="label" type="select" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Verification System</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\VerificationSystem</source_model>
+                </field>
+                <field id="base_eu_country" translate="label" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base EU Country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+                <field id="b2c_b2b_base_eu" translate="label" type="select" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>B2C &amp; B2B (Base EU Country)</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\CountryMode</source_model>
+                </field>
+                <field id="b2c_b2b_not_base_eu" translate="label" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>B2C &amp; B2B (within EU, not Base EU Country)</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\CountryMode</source_model>
+                </field>
+                <field id="vat_tax_rule" translate="label" type="multiselect" sortOrder="70"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>VAT/Tax Rule</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\TaxRules</source_model>
+                </field>
+                <field id="show_buy_without_vat_checkbox" translate="label" type="select" sortOrder="80"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "Buy without VAT" checkbox</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\EnableCheckboxOptions</source_model>
+                </field>
+                <field id="text_under_vat_tax_field" translate="label" type="text" sortOrder="90"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text for "Buy without VAT" checkbox</label>
+                </field>
+            </group>
+            <group id="help_messages" translate="label" type="text" sortOrder="500" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Help messages</label>
+                <field id="message" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\HelpMessages\HelpMessages</frontend_model>
+                    <backend_model>GoMage\LightCheckout\Model\Config\Backend\SelectFieldConverter</backend_model>
+                </field>
+            </group>
+            <group id="trust_seals" translate="label" type="text" sortOrder="500" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Trust Seals</label>
+                <field id="enable" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Trust Seals</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="seals" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\TrustSeals\TrustSeals</frontend_model>
+                    <backend_model>GoMage\LightCheckout\Model\Config\Backend\SelectFieldConverter</backend_model>
+                    <label>Trust Seals</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="social_media_login" translate="label" type="text" sortOrder="650" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Social Media Login</label>
+                <field id="enable_facebook" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Facebook</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Create app <a href="https://developers.facebook.com/apps" target="_bank">here</a>]]></comment>
+                </field>
+                <field id="app_id_facebook" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook App ID</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable_facebook">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret_facebook" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook App Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable_facebook">1</field>
+                    </depends>
+                </field>
+                <field id="redirect_url_facebook" translate="label" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\RedirectUrl</frontend_model>
+                    <label>Facebook Valid OAuth Redirect URLs</label>
+                    <depends>
+                        <field id="enable_facebook">1</field>
+                    </depends>
+                </field>
+                <field id="enable_google" translate="label comment" type="select" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Google</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Create app <a href="https://code.google.com/apis/console/" target="_bank">here</a>]]></comment>
+                </field>
+                <field id="app_id_google" translate="label" type="text" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Google Client ID</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable_google">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret_google" translate="label" type="text" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Google Client Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable_google">1</field>
+                    </depends>
+                </field>
+                <field id="redirect_url_google" translate="label" type="text" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\RedirectUrl</frontend_model>
+                    <label>Google Redirect URLs</label>
+                    <depends>
+                        <field id="enable_google">1</field>
+                    </depends>
+                </field>
+                <field id="enable_twitter" translate="label comment" type="select" sortOrder="90" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Twitter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Create app <a href="https://developer.twitter.com/en/apps" target="_bank">here</a>]]></comment>
+                </field>
+                <field id="app_id_twitter" translate="label" type="text" sortOrder="95" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API key</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable_twitter">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret_twitter" translate="label" type="text" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API secret key</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable_twitter">1</field>
+                    </depends>
+                </field>
+                <field id="redirect_url_twitter" type="text" sortOrder="110" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\RedirectUrl</frontend_model>
+                    <label>Twitter Callback URL</label>
+                    <depends>
+                        <field id="enable_twitter">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="newsletter_checkbox" translate="label" type="text" sortOrder="700" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Newsletter checkbox</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable/Disable in checkout and success page</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\NewsletterCheckbox</source_model>
+                </field>
+                <field id="checkbox_is_checked" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Checkbox is checked/unchecked</label>
+                    <source_model>GoMage\LightCheckout\Model\Config\Source\CheckboxOptions</source_model>
+                    <depends>
+                        <field id="enable" separator=",">1,3</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="color_settings" translate="label" type="text" sortOrder="800" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Color settings</label>
+                <field id="place_order_button" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Place order button</label>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\Color</frontend_model>
+                </field>
+                <field id="place_order_button_hover" translate="label comment" type="text" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Place order button hover</label>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\Color</frontend_model>
+                </field>
+                <field id="checkout_color" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Checkout Color</label>
+                    <frontend_model>GoMage\LightCheckout\Block\Adminhtml\Config\Color</frontend_model>
+                </field>
+            </group>
+            <group id="number_product_in_checkout" translate="label" type="text" sortOrder="900" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Number of products visible in checkout</label>
+                <field id="hide_products_in_total_order_block" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide products in Order Summary block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="number_visible_in_checkout" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of products visible in Order Summary block</label>
+                    <validate>validate-digits</validate>
+                    <depends>
+                        <field id="hide_products_in_total_order_block">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="order_comment" translate="label" type="text" sortOrder="1000" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Comment in Checkout</label>
+
+                <field id="show_order_comment_block" translate="label" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Order Comment Block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                    <depends>
+                        <field id="show_order_comment_block">1</field>
+                    </depends>
+                </field>
+                <field id="subtitle" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Subtitle</label>
+                    <depends>
+                        <field id="show_order_comment_block">1</field>
+                    </depends>
+                </field>
+                <field id="placeholder" translate="label comment" type="text" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Placeholder</label>
+                    <depends>
+                        <field id="show_order_comment_block">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

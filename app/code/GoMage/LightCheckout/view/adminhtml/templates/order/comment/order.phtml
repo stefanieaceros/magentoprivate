@@ -1,0 +1,19 @@
+<?php
+/** @var $block GoMage\LightCheckout\Block\Adminhtml\Order\Comment */
+?>
+<?php
+$comment = $block->getCommentOrder();
+?>
+<?php if ($comment): ?>
+    <div class="admin__page-section-item order-comment">
+        <div class="admin__page-section-title">
+        <span class="title"><?php /* @noEscape */
+            echo __('Comment') ?></span>
+        </div>
+        <div class="admin__page-section-item-content">
+            <?php /* @noEscape */
+            echo $comment; ?>
+        </div>
+    </div>
+<?php endif; ?>
+

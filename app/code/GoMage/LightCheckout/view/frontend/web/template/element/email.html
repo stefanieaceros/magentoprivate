@@ -1,0 +1,87 @@
+<div class="glc-step glc-login">
+
+    <!-- ko ifnot: isCustomerLoggedIn() -->
+
+    <!-- ko foreach: getRegion('before-login-form') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+    <form class="form form-login" data-role="email-with-possible-login"
+          data-bind="submit:login"
+          method="post">
+        <div class="step-title" data-role="title">
+            <span data-bind="i18n: 'Account Information'"></span>
+        </div>
+        <fieldset id="customer-email-fieldset" class="fieldset" data-bind="blockLoader: isLoading">
+            <div class="field required">
+                <label class="label" for="customer-email">
+                    <span data-bind="text: getLabel('Email')"></span>
+                </label>
+                <div class="control _with-tooltip">
+                    <input class="input-text"
+                           type="email"
+                           data-bind="
+                                textInput: email,
+                                hasFocus: emailFocused,
+                                attr: {
+                                        'placeholder': getPlaceholder('Email')
+                                        }"
+                           name="username"
+                           data-validate="{required:true, 'validate-email':true}"
+                           id="customer-email" />
+                    <div for="customer-email" generated="true" class="mage-error" id="customer-email-error"
+                         data-bind="fadeVisible: customerExist == false && onlyRegistered(), html: errorText"></div>
+                    <!-- ko template: 'ui/form/element/helper/tooltip' --><!-- /ko -->
+                    <span id="note-customer-email" class="note"
+                          data-bind="fadeVisible: isPasswordVisible() == false && !onlyRegistered()"><!-- ko i18n: 'You can create an account after checkout.'--><!-- /ko --></span>
+                </div>
+            </div>
+
+            <!--Hidden fields -->
+            <fieldset class="fieldset fieldset-password hidden-fields" data-bind="fadeVisible: isPasswordVisible">
+                <div class="field field-with-remind">
+                    <label class="label" for="customer-password">
+                        <span data-bind="i18n: 'Password'"></span>
+                    </label>
+                    <div class="control">
+                        <input class="input-text"
+                               type="password"
+                               name="password"
+                               id="customer-password"
+                               data-validate="{required:true}" autocomplete="off"/>
+                        <span class="note" data-bind="i18n: 'You already have an account with us. Log in or continue as guest.'"></span>
+                    </div>
+                    
+                    <a class="action remind" data-bind="attr: { href: forgotPasswordUrl }">
+                        <span data-bind="i18n: 'Forgot Your Password?'"></span>
+                    </a>
+
+                </div>
+                <!-- ko foreach: getRegion('additional-login-form-fields') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+                <div class="actions-toolbar">
+                    <input name="context" type="hidden" value="checkout" />
+                    <div class="primary">
+                        <button type="submit" class="action login primary" data-action="checkout-method-login"><span data-bind="i18n: 'Login'"></span></button>
+                    </div>
+                </div>
+            </fieldset>
+            <!--Hidden fields -->
+            <!-- ko foreach: getRegion('social-networks') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </fieldset>
+    </form>
+    <!-- /ko -->
+
+    <!-- ko foreach: getRegion('create-account') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+
+    <div id="subscribe-newsletter" data-bind="visible: isSubscribeVisible()">
+        <!-- ko foreach: getRegion('subscribeNewsletter') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>    
+
+</div>

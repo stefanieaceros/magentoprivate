@@ -1,0 +1,24 @@
+<div class="block items-in-cart" data-bind="mageInit: {'collapsible':{'openedState': 'active', 'active': isItemsBlockExpanded()}}">
+    <div class="title" data-role="title">
+        <strong role="heading">
+            <span class="heading-text" data-bind="i18n: 'Cart'"></span>
+            <span class="heading-qty" data-bind="text: getTotals()"></span>
+            <span class="heading-total" data-bind="text: getOrderTotal()"></span>
+        </strong>
+    </div>
+    <div class="content minicart-items" data-role="content">
+        <div class="minicart-items-wrapper overflowed">
+            <ol class="minicart-items">
+                <!-- ko foreach: items() -->
+                <li data-bind="css: $parent.productClasses">
+                    <div class="product">
+                        <!-- ko foreach: $parent.elems() -->
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </li>
+                <!-- /ko -->
+            </ol>
+        </div>
+    </div>
+</div>
